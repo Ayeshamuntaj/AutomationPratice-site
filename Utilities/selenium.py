@@ -17,3 +17,6 @@ class selenium:
         allure.attach(screenshot_path, attachment_type=allure.attachment_type.PNG, extension='png')
     def quit(self):
         return self.driver.quit()
+
+    def scrollup(self):
+        self.driver.execute_script("window.scrollBy(0, -500);")
