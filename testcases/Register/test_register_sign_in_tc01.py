@@ -12,9 +12,8 @@ from Utilities.randomemail import Randomemailgenerator
 
 class TestRegisterSignin:
     def test_ResisterSignin(self,driver):
-        driver.get(ReadConfig.getApplicationurl())
-        driver.maximize_window()
-        driver.registration=Registration(driver)
-        driver.registration.myaccount_click().email_address_input(Randomemailgenerator.random_email_generator()+"@gmail.com").password_input("Test@testing1234").register_button_click()
-        assert driver.registration.signout_link_displayed()=='Sign out',"Home page not loaded for Registration Signoff TC01 scenario"
-        driver.close()
+        registration=Registration(driver)
+        registration.selenium.openurl_max(ReadConfig.getApplicationurl())
+        registration.myaccount_click().email_address_input(Randomemailgenerator.random_email_generator()+"@gmail.com").password_input("Test@testing1234").register_button_click()
+        assert registration.signout_link_displayed()=='Sign out',"Home page not loaded for Registration Signoff TC01 scenario"
+        registration.close()

@@ -12,9 +12,8 @@ from Utilities.randomemail import Randomemailgenerator
 
 class TestRegisterSigninError:
     def test_ResisterSignin_error_invalid_Emailid(self,driver):
-        driver.get(ReadConfig.getApplicationurl())
-        driver.maximize_window()
-        driver.registration=Registration(driver)
-        driver.registration.myaccount_click().email_address_input(Randomemailgenerator.random_email_generator()+"@gmail.com").password_input("").register_button_click()
-        assert driver.registration.invalid_Emaild_address_error_text()=='Error: Please enter an account password.',"Error message not displayed Empty password for Registration Signoff TC04 scenario"
-        driver.close()
+        registration=Registration(driver)
+        registration.selenium.openurl_max(ReadConfig.getApplicationurl())
+        registration.myaccount_click().email_address_input(Randomemailgenerator.random_email_generator()+"@gmail.com").password_input("").register_button_click()
+        assert registration.invalid_Emaild_address_error_text()=='Error: Please enter an account password.',"Error message not displayed Empty password for Registration Signoff TC04 scenario"
+        registration.close()

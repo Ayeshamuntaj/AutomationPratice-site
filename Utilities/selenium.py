@@ -9,6 +9,18 @@ class selenium:
     def __init__(self,driver):
         self.driver=driver
 
+    def openurl_max(self,url):
+        self.driver.get(url)
+        self.driver.maximize_window()
+        return self
+
+    def back(self):
+        self.driver.back()
+        return self
+
+    def is_enabled(self,by,value):
+        return self.driver.find_element(by,value).is_enabled()
+
     def findelement(self, by, value):
         return self.driver.find_element(by, value)
     def findelements(self, by, value):
