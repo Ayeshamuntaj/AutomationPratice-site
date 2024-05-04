@@ -10,15 +10,18 @@
 # 10) Click on the Add To Basket button which adds that book to your basket
 # 11) User can view that Book in the Menu item with price.
 # 12) User can add a book by clicking on Add To Basket button which adds that book in to his Basket
+# 13) Select more books than the books in stock.Ex if the stock has 20 books, try to add 21.
+# 14) Click the add to basket button
+# 15) Now it throws an error prompt like you must enter a value between 1 and 20
 import time
 
 from Pageobject.Homepage.page_homepage import Homepage
 from Utilities.Readproperties import ReadConfig
-class TestHomepagearrivalsamountvalidate:
-    def test_homepage_validate_Amount(self,driver):
+class TestHomepagearrivalsaddmorebooks:
+    def test_homepage_add_to_cart_more_books(self,driver):
         homepage=Homepage(driver)
         homepage.selenium.openurl_max(ReadConfig.getApplicationurl())
         homepage.shop_link().homepage_link()
         assert homepage.arrival_count()==3,"Arrival count displayed incorrect for the Homepage arrival count scenario"
-        homepage.add_to_cart_amount()
-        assert homepage.cart_item_count() == "3 Items", "Add to cart not working for Images navigation under arrival page"
+        homepage.add_to_cart_books('67890')
+        assert homepage.cart_item_count() == "67890 Items", "No. of books are not added correctly for Test scenarios 7"

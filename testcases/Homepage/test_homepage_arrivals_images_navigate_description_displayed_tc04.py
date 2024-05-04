@@ -7,6 +7,8 @@
 # 7) Now click the image in the Arrivals
 # 8) Test whether it is navigating to next page where the user can add that book into his basket.
 # 9) Image should be clickable and shoul navigate to next page where user can add that book to his basket
+# 10) Click on Description tab for the book you clicked on.
+# 11) There should be a description regarding that book the user clicked on
 import time
 
 from Pageobject.Homepage.page_homepage import Homepage
@@ -17,6 +19,5 @@ class TestHomepagearrivalsnavigate:
         homepage.selenium.openurl_max(ReadConfig.getApplicationurl())
         homepage.shop_link().homepage_link()
         assert homepage.arrival_count()==3,"Arrival count displayed incorrect for the Homepage arrival count scenario"
-        homepage.arrival_add_to_basket_all_images()
-        assert homepage.cart_item_count() =="3 Items" ,"Add to cart not working for Images navigation under arrival page"
-        time.sleep(2)
+        homepage.product_description()
+        assert homepage.cart_item_count() == "3 Items", "Add to cart not working for Images navigation under arrival page"

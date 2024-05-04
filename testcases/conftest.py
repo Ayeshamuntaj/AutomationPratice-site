@@ -11,6 +11,7 @@ def driver(browser):
     else:
         driver=webdriver.Chrome()
     yield driver
+    driver.quit()
 
 def pytest_addoption(parser):
     parser.addoption("--browser")
